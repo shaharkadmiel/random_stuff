@@ -7,4 +7,5 @@
 jupyter-trust Notebooks/*.ipynb
 
 # Attempt to turn line numbers on
+mkdir -p ~/.jupyter/nbconfig
 cat notebook.json > ~/.jupyter/nbconfig/notebook.json
