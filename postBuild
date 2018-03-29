@@ -7,11 +7,4 @@ jupyter nbextension enable python-markdown/main
 jupyter-trust Notebooks/*.ipynb
 
 # Attempt to turn line numbers on
-echo "
-{
-  "Cell": {
-    "cm_config": {
-      "lineNumbers": true
-    }
-  }
-}" > ~/.jupyter/nbconfig/notebook.json
+cat notebook.json > ~/.jupyter/nbconfig/notebook.json
