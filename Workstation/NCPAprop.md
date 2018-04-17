@@ -57,39 +57,6 @@ I installed it with:
 brew install valgrind
 ```
 
-While making the .petsc-complex target. First I got:
-```
-===============================================================================
-             Configuring PETSc to compile on your system
-===============================================================================
-TESTING: checkCxxCompiler from config.setCompilers(config/BuildSystem/config/set
-*******************************************************************************
-         UNABLE to CONFIGURE with GIVEN OPTIONS    (see configure.log for details):
--------------------------------------------------------------------------------
-Cannot use C compiler gcc as the C++ compiler passed in with --with-cxx
-*******************************************************************************
-```
-
-I edited the `src/extern/Makefile` and removed the `--with-cxx` flag although it feels weird
-to have the `--with-clanguage=cxx` flag with only the `--with-cc` flag.
-
-Now `make` made it to the `.slepc-real` target and died in the testing phase after this error:
-```
-...
-C/C++ example src/eps/examples/tests/test10 run successfully with 1 MPI process
-Possible error running Fortran src/eps/examples/tests/test7f with 1 MPI process
- All requested eigenvalues computed up to the required tolerance:
-     3.98974, 3.95906, 3.90828, 3.83792
-
-
-1-D Laplacian Eigenproblem, n = 30 (Fortran)
- Solution method: krylovschur
-
- Number of requested eigenvalues: 4
-make[4]: *** [makefile:186: testtest7f] Error 1
-make[3]: *** [makefile:134: test_build] Error 2
-```
-
 I commented out all the `make ... test` lines in `src/extern/Makefile`:
 ```
 sed -i '' '/test/s/^/#/g' src/extern/Makefile
